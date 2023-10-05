@@ -17,6 +17,9 @@ coverage
 /cypress/videos/
 /cypress/screenshots/
 
+# Api keys
+config.js
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
