@@ -41,6 +41,7 @@
  
  const router = useRouter();
 
+ //Loads a city preview depending on a search result
  const previewCity = (searchResult) => {
    console.log(searchResult);
    const [city, state] = searchResult.place_name.split(",");
