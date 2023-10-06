@@ -1,5 +1,3 @@
-<script setup></script>
-
 <template>
   <main class="container text-white">
     <div class="pt-4 mb-8 relative">
@@ -30,6 +28,14 @@
         </template>
       </ul>
     </div>
+    <div class="flex flex-col gap-4">
+      <Suspense>
+        <CityList/>
+        <template #fallback>
+          <p>Loading...</p>
+        </template>
+      </Suspense>
+    </div>
   </main>
 </template>
 
@@ -38,6 +44,7 @@
  import axios from 'axios';
  import config from 'config';
  import {useRouter} from 'vue-router';
+ import CityList from '../components/CityList.vue';
  
  const router = useRouter();
 
