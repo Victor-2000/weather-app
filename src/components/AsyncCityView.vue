@@ -171,7 +171,6 @@ const removeCity = () => {
     }
     
     .custom-scroll-bar::-webkit-scrollbar-thumb {
-        /* background-color: #acacac48; */
         background-color: #acacac2d;
         border-radius: 14px;
         transition: background-color 0.2s ease-in-out;
