@@ -29,13 +29,17 @@
       </ul>
     </div>
     <div class="flex flex-col gap-4">
-      <Suspense>
-        <CityList/>
-        <template #fallback>
-          <CityCardSkeleton />
-        </template>
-      </Suspense>
-    </div>
+        <Suspense>
+          <Transition name="citycardview">
+            <CityList v-slot="{Component}">
+              <component :is="Component"/>
+            </CityList>
+          </Transition>
+          <template #fallback>
+            <CityCardSkeleton />
+          </template>
+        </Suspense>
+      </div>
   </main>
 </template>
 
@@ -45,7 +49,7 @@
  import config from 'config';
  import {useRouter} from 'vue-router';
  import CityList from '../components/CityList.vue';
-import CityCardSkeleton from '../components/CityCardSkeleton.vue';
+ import CityCardSkeleton from '../components/CityCardSkeleton.vue';
  
  const router = useRouter();
 
@@ -56,7 +60,7 @@ import CityCardSkeleton from '../components/CityCardSkeleton.vue';
    router.push({
      name: 'cityView',
      params: {
-       state: state.replaceAll(" ", ""),
+       state: state,
        city: city,
      },
      query: {
@@ -90,3 +94,23 @@ import CityCardSkeleton from '../components/CityCardSkeleton.vue';
     }, 300);
  }
 </script>
+
+<style>
+  .citycardview-enter-active {
+    transition: all 0.3s cubic-bezier(0.52, 0.02, 0.19, 1.02) 0.15s;
+  }
+
+  .citycardview-leave-active {
+    transition: all 0.3s cubic-bezier(0.52, 0.02, 0.19, 1.02);
+  }
+
+  .citycardview-enter-from {
+    opacity: 0;
+    transition: scale(0.8);
+  }
+
+  .citycardview-leave-to {
+    opacity: 1;
+    transition: scale(0.8);
+  }
+</style>
