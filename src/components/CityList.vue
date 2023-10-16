@@ -31,7 +31,7 @@ const getCities = async () => {
         });
 
         const weatherData = await Promise.all(requests);
-        
+
         //Wait for 1s
         await new Promise((resolve) => setTimeout(resolve, 1000));
 

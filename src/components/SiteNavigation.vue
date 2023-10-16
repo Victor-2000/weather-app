@@ -1,6 +1,6 @@
 <template>
     <header class="sticky top-0 bg-weather-primary shadow-lg">
-        <nav class="container flex flex-col sm:flex-row items-center gap-4 text-white py-6">
+        <nav class="container flex flex-col sm:flex-row items-center gap-4 text-white py-6 z-50">
             <RouterLink :to="{ name: 'home' }">
                 <div class="flex items-center gap-3">
                     <i class="fa-solid fa-sun text-2xl"></i>
@@ -83,7 +83,7 @@ const addCity = () => {
 
     savedCities.value.push(locationObj);
     localStorage.setItem('savedCities', JSON.stringify(savedCities.value));
-    
+
     console.log(JSON.stringify(savedCities.value));
 
     let query = Object.assign({}, route.query);
