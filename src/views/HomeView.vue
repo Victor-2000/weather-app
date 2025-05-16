@@ -78,7 +78,7 @@
 
  const getSearchResults = () => {
     clearTimeout(queryTimeout.value);
-    queryTimeout = setTimeout(async () => {
+    queryTimeout.value = setTimeout(async () => {
       if(searchQuery.value !== ""){
         try {
           const result = await axios.get(
